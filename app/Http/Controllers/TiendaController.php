@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Tienda;
 use Illuminate\Http\Request;
 
@@ -66,7 +67,24 @@ class TiendaController extends Controller
     {
         $tienda = Tienda::find($id);
 
-        return view('tienda.show', compact('tienda'));
+        $diffechas = DB::select('CALL sp_diffechas(?)', array($tienda->id_sap));
+        return view('tienda.show', compact('tienda'))->with('diffechas',$diffechas);
+        //return view('tienda.show', compact('tienda'));
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function detalle($id)
+    {
+        $tienda = Tienda::find($id);
+        
+        $comparativos = DB::select('CALL sp_allsuc(?)', array($tienda->id_sap));
+        //$cntdiferen = count($comparativos);
+        return view('tienda.difprecios', compact('tienda'))->with('compara',$comparativos);
     }
 
     /**
