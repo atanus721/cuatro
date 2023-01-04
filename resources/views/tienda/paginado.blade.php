@@ -55,6 +55,7 @@
 										<th style="padding-left: 30px;">EME</th>
 										<th style="padding-left: 30px;">EMAT</th>
 										<th style="padding-left: 30px;">DEV</th>
+										<th style="padding-left: 30px;">DIF</th>
 										<th style="padding-left: 30px;">ULTIMA ACTUALIZACION</th>
 
                                         <th style="padding-left: 30px;"></th>
@@ -141,6 +142,13 @@
 												@endif
 												{{ $tienda->devoluciones()->count() }}
 												</div>
+											</td>
+											<td>
+												@if (($tienda->updated_at->format('Y-m-d h')) == (date('Y-m-d h')))
+													<p class="text-primary">{{ $tienda->updated_at }}</p>
+												@else
+													<p class="text-danger">{{ $tienda->updated_at  }}</p>
+												@endif											
 											</td>
 											<td>
 												@if (($tienda->updated_at->format('Y-m-d h')) == (date('Y-m-d h')))
