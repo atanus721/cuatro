@@ -21,6 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('tiendas', App\Http\Controllers\TiendaController::class)->middleware('auth');
+Route::resource('administrador', App\Http\Controllers\AdminController::class)->middleware('auth');
 Route::get('tiendas/{id}/actualizar',[App\Http\Controllers\TiendaController::class,'actualizar'])->name('tiendas.actualizar');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
