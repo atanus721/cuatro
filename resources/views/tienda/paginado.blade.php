@@ -144,11 +144,15 @@
 												</div>
 											</td>
 											<td>
-												@if (($tienda->updated_at->format('Y-m-d h')) == (date('Y-m-d h')))
-													<p class="text-primary">{{ $tienda->updated_at }}</p>
+												@if ($tienda->diftotal == 0)
+												<div class="btn btn-sm btn-success">
+													0
+												</div>
 												@else
-													<p class="text-danger">{{ $tienda->updated_at  }}</p>
-												@endif											
+												<div class="btn btn-sm btn-warning">
+													{{ $tienda->diftotal }}
+												</div>
+												@endif
 											</td>
 											<td>
 												@if (($tienda->updated_at->format('Y-m-d h')) == (date('Y-m-d h')))
